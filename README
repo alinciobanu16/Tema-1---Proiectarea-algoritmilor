@@ -1,0 +1,38 @@
+Ciobanu Alin-Matei 325CB
+
+	Problema 1: bani.c
+	- pentru primul tip se observa ca la adaugarea unei bacnote se dubleaza
+	numarul de moduri. Am folosit o functie de ridicare la putere facuta la
+	laboratorul de divide et impera cu complexitate O(log exponent)
+	- deci pentru tipul 1 complexitatea temporala este O(log N), iar spatiala O(1).
+	- pentru tipul 2 vad cate combinatii mi se termina in fiecare bancnota
+	si la fiecare pas adun combinatiile bacnotelor dupa care bacnota curenta
+	poate fi pusa.
+	- complexitate T: O(N), S: O(1) (am nevoie doar de combinatiile precedente)
+
+	Problema 2: gard.c
+	- sortez crescator dupa partea de inceput a fiecarei scandure si descrescator
+	dupa partea de sfarsit a acesteia in caz de egalitate la inceput.
+	- astfel stiu ca partea de inceput este inclusa in precedenta
+	- iau un max pentru partea de sfarsit
+	- daca partea de sfarsit este mai mica decat max inseamna ca acea bucata de
+	gard este redundanta si o scot, altfel daca este mai mare actualizez max.
+	- complexitate T: O(N), S: (2*N) (memorez intr-o structura cele 2 coordonate
+
+	Problema 3: bomboane.c
+	- idee asemanatoare cu cea de la rucsac de la laboratorul de PD
+	- folosesc o matrice in care dp[i][j] inseamna in cate moduri pot sa impart
+	j bomboane la i elevi
+	- pe prima linie pun in cate moduri pot sa impart j bomboane primului elev
+	astfel ca daca j se afla in intervalul primului elev atunci pun 1, altfel 0
+	- pentru recurenta am nevoie de linia precedenta
+	- pentru primul exemplu din enunt: sa zicem de exemplu ca vreau sa impart
+	5 bomboane la cei 3 elevi, adica vreau sa calculez dp[3][5];
+	elevul 3 poate primi {2,3,4} bomboane, a.i ii dau prima data 2 si inseamna
+	ca mai raman cu 3 bomboane din cele 5 pe care vreau sa le impart celorlalti
+	2 elevi ramasi adica dp[2][3]; apoi ii dau 3 bomboane si ramane sa impart
+	2 bomboane celor 2 elevi adica dp[2][2]; in final ii dau 4 bomboane si
+	impart 1 bomboana la 2 elevi adica dp[2][1]. solutia dp[3][5] este
+	reprezentata de suma celor precedente adica: dp[3][5] = dp[2][3]+dp[2][2]+
+	+dp[2][1]
+	- complexitate T: O(N*M), S: O(N*M)
